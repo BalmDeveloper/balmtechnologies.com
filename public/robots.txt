@@ -1,0 +1,5 @@
+# https://www.balmtechnologies.com/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.balmtechnologies.com/sitemap.xml
