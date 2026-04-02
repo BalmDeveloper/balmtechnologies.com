@@ -1,6 +1,20 @@
 {
   "hosting": {
     "public": "dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/insights",
+        "destination": "/insights.html"
+      },
+      {
+        "source": "/insights/the-gift-of-naming-things",
+        "destination": "/insights/the-gift-of-naming-things.html"
+      },
+      {
+        "source": "/portfolio",
+        "destination": "/portfolio.html"
+      }
+    ]
   }
 }
