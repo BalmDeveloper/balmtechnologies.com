@@ -212,6 +212,7 @@ a {
     width: 100%;
     justify-content: center;
     margin-top: var(--space-md);
+    color: #ffffff;
   }
 
   .site-nav {
