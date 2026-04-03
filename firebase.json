@@ -8,6 +8,10 @@
         "destination": "/insights.html"
       },
       {
+        "source": "/the-gift-of-naming-things",
+        "destination": "/insights/the-gift-of-naming-things.html"
+      },
+      {
         "source": "/insights/the-gift-of-naming-things",
         "destination": "/insights/the-gift-of-naming-things.html"
       },
