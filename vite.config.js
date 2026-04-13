@@ -25,6 +25,35 @@ const copyImagesPlugin = () => ({
   }
 });
 
+// Dev server rewrite plugin for clean URLs
+const devServerRewritePlugin = () => ({
+  name: "dev-server-rewrite",
+  configureServer(server) {
+    server.middlewares.use((req, url, next) => {
+      const path = req.url || url;
+      
+      // Rewrite rules for clean URLs
+      const rewrites = [
+        { from: /^\/insights\/?$/, to: "/insights.html" },
+        { from: /^\/portfolio\/?$/, to: "/portfolio.html" },
+        { from: /^\/the-gift-of-naming-things\/?$/, to: "/insights/the-gift-of-naming-things.html" },
+        { from: /^\/insights\/the-gift-of-naming-things\/?$/, to: "/insights/the-gift-of-naming-things.html" },
+        { from: /^\/deals-are-forged-not-found\/?$/, to: "/insights/deals-are-forged-not-found.html" },
+        { from: /^\/insights\/deals-are-forged-not-found\/?$/, to: "/insights/deals-are-forged-not-found.html" }
+      ];
+      
+      for (const rewrite of rewrites) {
+        if (rewrite.from.test(path)) {
+          req.url = rewrite.to;
+          break;
+        }
+      }
+      
+      next();
+    });
+  }
+});
+
 export default defineConfig({
   base: "./",
   build: {
@@ -57,5 +86,5 @@ export default defineConfig({
       allow: [".."]
     }
   },
-  plugins: [copyImagesPlugin()]
+  plugins: [copyImagesPlugin(), devServerRewritePlugin()]
 });
