@@ -16,6 +16,14 @@
         "destination": "/insights/the-gift-of-naming-things.html"
       },
       {
+        "source": "/deals-are-forged-not-found",
+        "destination": "/insights/deals-are-forged-not-found.html"
+      },
+      {
+        "source": "/insights/deals-are-forged-not-found",
+        "destination": "/insights/deals-are-forged-not-found.html"
+      },
+      {
         "source": "/portfolio",
         "destination": "/portfolio.html"
       }

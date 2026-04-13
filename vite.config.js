@@ -33,6 +33,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         insights: resolve(__dirname, "insights.html"),
         article: resolve(__dirname, "insights/the-gift-of-naming-things.html"),
+        article2: resolve(__dirname, "insights/deals-are-forged-not-found.html"),
         portfolio: resolve(__dirname, "portfolio.html")
       },
       output: {
