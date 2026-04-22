@@ -24,6 +24,14 @@
         "destination": "/insights/deals-are-forged-not-found.html"
       },
       {
+        "source": "/lessons-from-the-jewish-phenomenon",
+        "destination": "/insights/lessons-from-the-jewish-phenomenon.html"
+      },
+      {
+        "source": "/insights/lessons-from-the-jewish-phenomenon",
+        "destination": "/insights/lessons-from-the-jewish-phenomenon.html"
+      },
+      {
         "source": "/portfolio",
         "destination": "/portfolio.html"
       }

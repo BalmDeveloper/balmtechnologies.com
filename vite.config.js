@@ -25,6 +25,29 @@ const copyImagesPlugin = () => ({
   }
 });
 
+// Custom plugin to copy CSS folder after build
+const copyCssPlugin = () => ({
+  name: "copy-css",
+  closeBundle() {
+    const srcDir = resolve(__dirname, "css");
+    const destDir = resolve(__dirname, "dist", "css");
+    
+    if (fs.existsSync(srcDir)) {
+      if (!fs.existsSync(destDir)) {
+        fs.mkdirSync(destDir, { recursive: true });
+      }
+      
+      const files = fs.readdirSync(srcDir);
+      for (const file of files) {
+        const srcFile = resolve(srcDir, file);
+        const destFile = resolve(destDir, file);
+        fs.copyFileSync(srcFile, destFile);
+      }
+      console.log("✓ CSS copied to dist/css");
+    }
+  }
+});
+
 // Dev server rewrite plugin for clean URLs
 const devServerRewritePlugin = () => ({
   name: "dev-server-rewrite",
@@ -39,7 +62,9 @@ const devServerRewritePlugin = () => ({
         { from: /^\/the-gift-of-naming-things\/?$/, to: "/insights/the-gift-of-naming-things.html" },
         { from: /^\/insights\/the-gift-of-naming-things\/?$/, to: "/insights/the-gift-of-naming-things.html" },
         { from: /^\/deals-are-forged-not-found\/?$/, to: "/insights/deals-are-forged-not-found.html" },
-        { from: /^\/insights\/deals-are-forged-not-found\/?$/, to: "/insights/deals-are-forged-not-found.html" }
+        { from: /^\/insights\/deals-are-forged-not-found\/?$/, to: "/insights/deals-are-forged-not-found.html" },
+        { from: /^\/lessons-from-the-jewish-phenomenon\/?$/, to: "/insights/lessons-from-the-jewish-phenomenon.html" },
+        { from: /^\/insights\/lessons-from-the-jewish-phenomenon\/?$/, to: "/insights/lessons-from-the-jewish-phenomenon.html" }
       ];
       
       for (const rewrite of rewrites) {
@@ -63,6 +88,7 @@ export default defineConfig({
         insights: resolve(__dirname, "insights.html"),
         article: resolve(__dirname, "insights/the-gift-of-naming-things.html"),
         article2: resolve(__dirname, "insights/deals-are-forged-not-found.html"),
+        article3: resolve(__dirname, "insights/lessons-from-the-jewish-phenomenon.html"),
         portfolio: resolve(__dirname, "portfolio.html")
       },
       output: {
@@ -86,5 +112,5 @@ export default defineConfig({
       allow: [".."]
     }
   },
-  plugins: [copyImagesPlugin(), devServerRewritePlugin()]
+  plugins: [copyImagesPlugin(), copyCssPlugin(), devServerRewritePlugin()]
 });
